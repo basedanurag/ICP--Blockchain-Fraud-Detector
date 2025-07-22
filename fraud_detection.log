@@ -1,0 +1,18 @@
+2025-07-23 01:06:51,438 - INFO - Fraud detection model loaded successfully
+2025-07-23 01:06:51,438 - INFO - MongoDB connection established successfully
+2025-07-23 01:06:51,438 - INFO - Found 1 transactions for wallet_id: test_wallet
+2025-07-23 01:06:51,439 - INFO - MongoDB connection closed successfully
+2025-07-23 01:06:51,439 - INFO - Analysis completed. Processed 1 transactions successfully.
+2025-07-23 01:06:51,441 - ERROR - Invalid risk score encountered.
+2025-07-23 01:06:51,442 - INFO - Fraud detection model loaded successfully
+2025-07-23 01:06:51,443 - INFO - MongoDB connection established successfully
+2025-07-23 01:06:51,443 - INFO - Found 2 transactions for wallet_id: format_test_wallet
+2025-07-23 01:06:51,443 - INFO - MongoDB connection closed successfully
+2025-07-23 01:06:51,443 - INFO - Analysis completed. Processed 2 transactions successfully.
+2025-07-23 01:06:51,445 - ERROR - Model file 'fraud_model.pkl' not found. Please ensure the model file exists in the current directory.
+2025-07-23 01:06:51,445 - WARNING - Timestamp format not recognized: <class 'NoneType'>. Using current time.
+2025-07-23 01:06:51,447 - INFO - Fraud detection model loaded successfully
+2025-07-23 01:06:51,447 - INFO - MongoDB connection established successfully
+2025-07-23 01:06:51,448 - INFO - Found 10 transactions for wallet_id: perf_test_wallet
+2025-07-23 01:06:51,448 - INFO - MongoDB connection closed successfully
+2025-07-23 01:06:51,448 - INFO - Analysis completed. Processed 10 transactions successfully.
