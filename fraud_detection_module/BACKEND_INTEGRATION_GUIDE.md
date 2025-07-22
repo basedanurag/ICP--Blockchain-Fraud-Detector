@@ -1,18 +1,35 @@
 # Backend Integration Guide for Fraud Detection Module
 
-This guide provides comprehensive instructions for backend developers to integrate the fraud detection module into their applications.
+This guide provides comprehensive instructions for backend developers to integrate the fraud detection module into their applications for **global blockchain transaction analysis**.
+
+## 🌍 Global Fraud Detection Overview
+
+This module is designed to analyze transactions from **any blockchain wallet address globally**, not limited to specific networks. It works with:
+- **Ethereum** and EVM-compatible chains
+- **Bitcoin** (with address format adaptation)
+- **Other blockchain networks** (with proper data formatting)
+
+### Real-Time Global Analysis Requirements
+
+To enable real-time global fraud detection, you need:
+1. **Blockchain Data Providers**: Integration with services like Alchemy, Infura, Moralis, or QuickNode
+2. **Live Data Pipeline**: Continuous updates to your MongoDB with global transaction data
+3. **Dynamic Address Processing**: Handle any wallet address format from supported networks
+4. **Scalable Infrastructure**: Handle high-volume transaction data across multiple blockchains
 
 ## 📋 Prerequisites
 
 ### System Requirements
 - **Python**: 3.8 or higher
-- **MongoDB**: Running at `mongodb://localhost:27017/`
+- **MongoDB**: Running at `mongodb://localhost:27017/` with proper indexing for large datasets
+- **Blockchain Data Provider**: API keys for real-time data access
 - **Dependencies**: Listed in requirements section
 
 ### Required Files
 - `fraud_detection.py` - Main module
 - `fraud_model.pkl` - Trained ML model (2.2MB)
 - Database with `fraud_detection.transactions` collection
+- Real-time data ingestion pipeline
 
 ## 🚀 Quick Start
 
