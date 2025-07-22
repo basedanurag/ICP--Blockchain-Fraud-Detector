@@ -497,4 +497,4 @@ For technical support or questions:
 
 **Version**: 1.0.0
 **Last Updated**: 2024-01-15
-**Maintained by**: AI/ML Team
+**Maintained by**: AI/ML Team Anurag and Trisha
