@@ -129,11 +129,17 @@ const apiService = {
       const response = await apiClient.get('/api/fraud');
       
       // Validate response data structure
-      if (!Array.isArray(response.data)) {
+      let data = response.data;
+      
+      // Handle different response formats
+      if (data.transactions && Array.isArray(data.transactions)) {
+        // If wrapped in an object with transactions array
+        data = data.transactions;
+      } else if (!Array.isArray(data)) {
         throw new Error('Invalid response format: expected array of transactions');
       }
       
-      return response.data;
+      return data;
     } catch (error) {
       // Re-throw with additional context
       if (error.standardized) {

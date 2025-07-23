@@ -165,20 +165,20 @@ const TransactionTable = ({ transactions = [], loading = false, error = null }) 
               <tbody className="bg-white divide-y divide-gray-200">
                 {transactions.map((transaction, index) => (
                   <tr 
-                    key={transaction.transaction_hash || index}
+                    key={transaction.tx_hash || transaction.transaction_id || index}
                     className={`${getRiskLevelBgColor(transaction.risk_level)} hover:opacity-80 transition-opacity`}
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex flex-col">
                         <div 
                           className="text-sm font-mono text-gray-900 cursor-pointer hover:text-blue-600 transition-colors"
-                          title={transaction.transaction_hash}
+                          title={transaction.tx_hash || transaction.transaction_id}
                         >
-                          {truncateHash(transaction.transaction_hash)}
+                          {truncateHash(transaction.tx_hash || transaction.transaction_id)}
                         </div>
                         <div className="text-xs text-gray-500 sm:hidden">
                           {/* Show full hash on mobile when needed */}
-                          <span className="break-all">{transaction.transaction_hash}</span>
+                          <span className="break-all">{transaction.tx_hash || transaction.transaction_id}</span>
                         </div>
                       </div>
                     </td>
