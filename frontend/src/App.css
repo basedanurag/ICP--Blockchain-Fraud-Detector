@@ -1,0 +1,48 @@
+/* App component specific styles */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* Ensure proper layout flow */
+.App main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .App {
+    min-height: 100vh;
+  }
+}
+
+/* Print styles */
+@media print {
+  .App {
+    background-color: white;
+  }
+  
+  header, footer {
+    display: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .App {
+    background-color: white;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
