@@ -29,13 +29,22 @@ const WalletSearch = ({ onSearch, loading = false }) => {
     validateWalletId(value);
   };
 
-  const handleSearch = () => {
+  const handleWalletSearch = () => {
     const trimmedValue = walletId.trim();
     
+    if (!trimmedValue) {
+      setError('Please enter a wallet ID for wallet-specific search');
+      return;
+    }
+    
     if (validateWalletId(trimmedValue)) {
-      // Call onSearch with wallet ID (empty string for all transactions)
       onSearch(trimmedValue);
     }
+  };
+
+  const handleGlobalSearch = () => {
+    // Clear any wallet ID and fetch all transactions
+    onSearch('');
   };
 
   const handleClear = () => {
@@ -45,7 +54,7 @@ const WalletSearch = ({ onSearch, loading = false }) => {
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !loading && !error) {
-      handleSearch();
+      handleWalletSearch();
     }
   };
 
@@ -82,46 +91,93 @@ const WalletSearch = ({ onSearch, loading = false }) => {
         </div>
 
         {/* Buttons */}
-        <div className="flex space-x-3">
+        <div className="flex flex-wrap gap-3">
+          {/* Fetch All Transactions Button */}
           <button
-            onClick={handleSearch}
-            disabled={loading || !!error}
-            className={`px-6 py-2 rounded-lg font-medium transition-colors ${
-              loading || error
+            onClick={handleGlobalSearch}
+            disabled={loading}
+            className={`px-6 py-2 rounded-lg font-medium transition-colors flex items-center ${
+              loading
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-green-600 text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-200'
+            }`}
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading...
+              </>
+            ) : (
+              <>
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
+                </svg>
+                Fetch All Transactions
+              </>
+            )}
+          </button>
+
+          {/* Search Wallet Button */}
+          <button
+            onClick={handleWalletSearch}
+            disabled={loading || !walletId.trim()}
+            className={`px-6 py-2 rounded-lg font-medium transition-colors flex items-center ${
+              loading || !walletId.trim()
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 : 'bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-200'
             }`}
           >
             {loading ? (
-              <div className="flex items-center">
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 Searching...
-              </div>
+              </>
             ) : (
-              'Search'
+              <>
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                </svg>
+                Search Wallet
+              </>
             )}
           </button>
 
+          {/* Clear Button */}
           <button
             onClick={handleClear}
             disabled={loading}
-            className={`px-6 py-2 rounded-lg font-medium border transition-colors ${
+            className={`px-6 py-2 rounded-lg font-medium border transition-colors flex items-center ${
               loading
                 ? 'border-gray-300 text-gray-400 cursor-not-allowed'
                 : 'border-gray-300 text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200'
             }`}
           >
+            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
             Clear
           </button>
         </div>
 
         {/* Helper Text */}
-        <div className="text-sm text-gray-500">
-          <p>Enter a valid Ethereum wallet address (0x...) to search for specific wallet transactions,</p>
-          <p>or leave empty to view all transactions.</p>
+        <div className="text-sm text-gray-500 space-y-2">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <p className="font-medium text-gray-600">🌍 Global Search:</p>
+              <p>Click "Fetch All Transactions" to retrieve all transactions from the database.</p>
+            </div>
+            <div>
+              <p className="font-medium text-gray-600">🔍 Wallet Search:</p>
+              <p>Enter a valid Ethereum address (0x...) and click "Search Wallet" for specific wallet transactions.</p>
+            </div>
+          </div>
+          <p className="text-xs text-gray-400 mt-2">Note: Wallet search requires a valid 42-character Ethereum address starting with 0x</p>
         </div>
       </div>
     </div>
