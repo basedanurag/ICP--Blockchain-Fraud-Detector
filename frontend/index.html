@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Fraud Detection Dashboard</h1>
+        
+        <form id="transaction-form">
+            <div class="form-group">
+                <label for="wallet-address">Wallet Address:</label>
+                <input 
+                    type="text" 
+                    id="wallet-address" 
+                    name="wallet-address" 
+                    placeholder="Enter wallet address (optional)"
+                    pattern="^(0x[a-fA-F0-9]{40})?$" 
+                    title="Wallet address must be 42 characters long starting with '0x'"
+                >
+            </div>
+            <button type="submit" id="fetch-transactions">Fetch Transactions</button>
+            <button type="button" id="clear-results">Clear Results</button>
+        </form>
+
+        <div id="transaction-summary" style="display: none;">
+            <p id="transaction-count"></p>
+            <p id="risk-statistics"></p>
+        </div>
+
+        <div id="status-container">
+            <!-- Loading spinner -->
+            <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+            <!-- Error message -->
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </div>
+
+        <table id="transactions-table" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Transaction Hash</th>
+                    <th>Wallet Address</th>
+                    <th>Amount</th>
+                    <th>Risk Level</th>
+                    <th>Fraud Probability</th>
+                </tr>
+            </thead>
+            <tbody id="transactions-tbody">
+                <!-- Transaction data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
