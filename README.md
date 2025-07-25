@@ -1,6 +1,6 @@
-# IPC Blockchain Fraud Detection System - Full Stack Implementation
+# ICP Blockchain Fraud Detection System - Full Stack Implementation
 
-A comprehensive blockchain fraud detection system that combines AI/ML fraud detection capabilities with a robust full-stack application. This project provides real-time analysis of blockchain transactions to identify potentially fraudulent activities on the IPC blockchain.
+A comprehensive blockchain fraud detection system that combines AI/ML fraud detection capabilities with a robust full-stack application. This project provides real-time analysis of blockchain transactions to identify potentially fraudulent activities on the ICP blockchain.
 
 ## 🏗️ Project Architecture
 
@@ -31,8 +31,8 @@ Before setting up the project, ensure you have the following installed:
 
 ### 1. Clone and Navigate to Project
 ```bash
-git clone <repository-url>
-cd "Dorahacks ai module"
+git clone https://github.com/basedanurag/ICP--Blockchain-Fraud-Detector.git
+cd "ICP--Blockchain-Fraud-Detector"
 ```
 
 ### 2. Start MongoDB Database
@@ -131,14 +131,14 @@ curl -X POST http://localhost:8080/api/analyze \
 ## 📁 Project Structure
 
 ```
-Dorahacks ai module/
+ICP--Blockchain-Fraud-Detector/
 ├── backend/                    # Rust backend service
 │   ├── src/
 │   │   ├── main.rs            # Application entry point
 │   │   ├── routes.rs          # API route definitions
 │   │   ├── models.rs          # Data models
 │   │   ├── db.rs              # Database operations
-│   │   └── ipc/               # IPC blockchain integration
+│   │   └── icp/               # ICP blockchain integration
 │   ├── Cargo.toml             # Rust dependencies
 │   └── .env                   # Environment variables
 ├── frontend/                   # React frontend application
@@ -238,14 +238,10 @@ The system uses MongoDB for data persistence. Ensure MongoDB is running on the d
 4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🏆 Acknowledgments
 
 - Built for DoraHacks hackathon
-- Uses IPC blockchain infrastructure
+- Uses ICP blockchain infrastructure
 - Implements machine learning for fraud detection
 - Modern full-stack architecture with Rust and React
 
