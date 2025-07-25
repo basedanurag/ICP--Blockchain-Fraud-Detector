@@ -1,0 +1,7 @@
+nohup: ignoring input
+
+> frontend@0.1.0 start
+> react-scripts start
+
+(node:51228) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
